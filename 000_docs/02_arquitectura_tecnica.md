@@ -2,7 +2,7 @@
 
 Este documento describe la arquitectura técnica propuesta para la aplicación **BiblioFlash**, construida sobre la plataforma de **Google Firebase**.
 
-> **Nota Arquitectónica Importante**: La estrategia para la generación y el servicio de datos de contenido (flashcards) está detallada en el documento [ADR-001: Arquitectura de Datos Inicial](./07_adr_data_architecture.md). Se recomienda leer ese documento para entender el enfoque actual.
+> **Nota Arquitectónica Importante**: Las decisiones clave de arquitectura, como la estrategia de generación de datos y la autenticación, se registran en el [**Registro de Decisiones de Arquitectura (ADR)](./04_adr.md)**. Se recomienda consultarlo para entender el *porqué* de la estructura actual.
 
 ## 1. Diagrama de Arquitectura General
 
@@ -34,7 +34,7 @@ Este documento describe la arquitectura técnica propuesta para la aplicación *
 
 ### 2.1. **Firebase Authentication**
 - **Propósito**: Gestionar la identidad de los usuarios.
-- **Implementación**: Se utilizarán proveedores de identidad como Google, Facebook y correo/contraseña para facilitar el registro y el inicio de sesión. Esto nos permitirá asociar los datos del usuario (progreso, favoritos, etc.) a una cuenta única y segura.
+- **Implementación (Actual)**: Para el MVP, se ha implementado la autenticación exclusivamente a través de **Google Sign-In (SSO)**. La lógica de autenticación en el frontend está encapsulada en un **Contexto de React (`AuthContext.jsx`)**, que provee un hook `useAuth()` para que cualquier componente pueda acceder al estado del usuario (`currentUser`) y a las funciones de `loginWithGoogle` y `logout`. Este enfoque centraliza la gestión de la sesión del usuario.
 
 ### 2.2. **Cloud Firestore**
 - **Propósito**: Base de datos principal de la aplicación (NoSQL).
@@ -67,7 +67,11 @@ Este documento describe la arquitectura técnica propuesta para la aplicación *
 
 ## 4. Flujo de Datos (Ejemplo: Sesión de Estudio)
 
-1.  El usuario inicia sesión a través de **Firebase Authentication**.
+1.  Un usuario no autenticado que intenta acceder a una ruta protegida (ej. `/decks`) es redirigido a `/login`.
+2.  En la página de login, el usuario hace clic en "Iniciar sesión con Google".
+3.  Se invoca la función `loginWithGoogle` del `AuthContext`, que abre la ventana emergente de Google para la autenticación.
+4.  Una vez que Firebase confirma la autenticación exitosa, el observador `onAuthStateChanged` en el `AuthContext` actualiza el estado `currentUser`.
+5.  El cambio en `currentUser` provoca que el enrutador principal redirija al usuario desde `/login` a la página principal de la aplicación (`/`).
 2.  La app cliente consulta **Cloud Firestore** para obtener el mazo de flashcards del día, basado en el progreso del usuario y el algoritmo de repetición espaciada.
 3.  Para cada flashcard, la app muestra la palabra/frase en inglés.
 4.  Cuando el usuario lo solicita, la app reproduce el audio de la pronunciación, obteniendo el archivo `.mp3` desde **Cloud Storage**.
@@ -82,7 +86,7 @@ Para asegurar que BiblioFlash sea una aplicación mantenible, escalable y robust
 Adoptaremos una separación de capas para desacoplar la lógica de negocio de los detalles de implementación (frameworks, UI, base de datos).
 
 - **Presentation (UI)**: Nuestros componentes de React (`pages`, `components`). Su única responsabilidad es mostrar la interfaz y capturar la interacción del usuario.
-- **Application (Casos de Uso)**: La lógica que orquesta el flujo de datos. Implementaremos esto a través de **hooks de React personalizados** que encapsularán los casos de uso (ej. `useDecks`, `useAuthentication`).
+- **Application (Casos de Uso)**: La lógica que orquesta el flujo de datos. Esto se implementa a través de **hooks de React personalizados**. Ya hemos aplicado este patrón con nuestro hook `useAuth()`, que expone el caso de uso de la autenticación a la UI.
 - **Domain (Entidades)**: Las reglas de negocio y entidades centrales (ej. `Deck`, `Card`, `User`). Serán objetos simples sin dependencias externas.
 - **Infrastructure (Infraestructura)**: Los detalles externos. Nuestro directorio `src/services` es la implementación de esta capa, donde aislamos toda la comunicación con Firebase (Firestore, Auth, etc.).
 

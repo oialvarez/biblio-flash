@@ -1,37 +1,28 @@
 import React, { useState } from 'react';
+import { useDecks } from '../hooks/useDecks'; // Importamos nuestro nuevo hook
 import DeckList from '../components/DeckList';
-import { generateDeck } from '../services/deckService'; // Importamos nuestro servicio
-import styles from './DecksPage.module.css'; // Importamos los estilos
-
-// Datos de ejemplo hasta que conectemos con Firestore
-const sampleDecks = [
-  { id: '1', title: 'Salmos de Sabiduría', description: 'Una selección de Salmos para la meditación diaria.' },
-  { id: '2', title: 'Proverbios para la Vida', description: 'Consejos prácticos de los Proverbios.' },
-  { id: '3', title: 'Vocabulario Clave del Nuevo Testamento', description: 'Términos esenciales en griego y su significado.' },
-];
+import styles from './DecksPage.module.css';
+import GeneratedDeck from '../components/GeneratedDeck';
 
 const DecksPage = () => {
-  // Estado para el formulario y la llamada a la API
+  // Toda la lógica compleja ahora vive en el hook useDecks
+  const {
+    userDecks,
+    decksLoading,
+    decksError,
+    isGenerating,
+    generationError,
+    generatedDeck,
+    handleGenerateDeck,
+  } = useDecks();
+
+  // Estado local solo para el formulario, que es responsabilidad de esta página
   const [topic, setTopic] = useState('');
   const [count, setCount] = useState(10);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [newDeck, setNewDeck] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsLoading(true);
-    setError(null);
-    setNewDeck(null);
-
-    try {
-      const generatedDeck = await generateDeck(topic, count);
-      setNewDeck(generatedDeck);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
+    await handleGenerateDeck(topic, count);
   };
 
   return (
@@ -63,24 +54,23 @@ const DecksPage = () => {
             required
           />
         </div>
-        <button type="submit" className={styles.submitButton} disabled={isLoading}>
-          {isLoading ? 'Generando...' : 'Generar Mazo'}
+        <button type="submit" className={styles.submitButton} disabled={isGenerating}>
+          {isGenerating ? 'Generando...' : 'Generar Mazo'}
         </button>
       </form>
 
-      {isLoading && <div className={`${styles.feedbackMessage} ${styles.loading}`}>Creando tu mazo, por favor espera...</div>}
-      {error && <div className={`${styles.feedbackMessage} ${styles.error}`}>{error}</div>}
-      {newDeck && (
-        <div className={`${styles.feedbackMessage} ${styles.success}`}>
-          ¡Éxito! Se generó un nuevo mazo con {newDeck.cards.length} tarjetas. Lo verás en la lista de abajo una vez que implementemos la conexión con Firestore.
-        </div>
-      )}
+      {isGenerating && <div className={`${styles.feedbackMessage} ${styles.loading}`}>Creando tu mazo, por favor espera...</div>}
+      {generationError && <div className={`${styles.feedbackMessage} ${styles.error}`}>{generationError}</div>}
+      {generatedDeck && <GeneratedDeck cards={generatedDeck.cards} />}
 
       <hr />
 
-      <h2>Mazos Disponibles</h2>
-      <p>Estos son los mazos que hemos preparado para ti.</p>
-      <DeckList decks={sampleDecks} />
+      <h2>Tus Mazos</h2>
+      {decksLoading && <p>Cargando tus mazos...</p>}
+      {decksError && <p className={styles.error}>{decksError}</p>}
+      {!decksLoading && !decksError && (
+        <DeckList decks={userDecks} />
+      )}
     </div>
   );
 };
