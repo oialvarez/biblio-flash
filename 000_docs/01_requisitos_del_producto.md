@@ -21,6 +21,11 @@ Este documento detalla los requisitos funcionales y no funcionales para la aplic
 - **Búsqueda Global**: Buscar palabras, frases o temas en toda la base de datos de la aplicación (flashcards, Salmos, Proverbios).
 - **Filtros**: Filtrar contenido por libro de la Biblia, tema (ej. "Fe", "Perdón") o dificultad.
 
+### 1.4. Gestión de Usuarios y Autenticación
+- **Cuentas de Usuario**: Los usuarios deben poder registrarse, iniciar sesión y cerrar sesión de forma segura.
+- **Proveedores de Identidad**: Soportar inicialmente el inicio de sesión único (SSO) con **Google**. Otros proveedores (Facebook, etc.) y el registro con correo/contraseña se considerarán en futuras iteraciones.
+- **Persistencia de Datos**: La cuenta de usuario es fundamental para guardar el progreso, los mazos personalizados y las preferencias a través de múltiples dispositivos.
+
 ## 2. Funcionalidades de Soporte y Gamificación
 
 ### 2.1. Seguimiento del Progreso del Usuario

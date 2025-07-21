@@ -32,4 +32,13 @@ Mis responsabilidades clave incluyen:
 - **Automatización**: Gestionar tareas repetitivas como la configuración de builds, despliegues y pruebas.
 - **Investigación y Resolución de Problemas**: Investigar soluciones técnicas, resolver desafíos de implementación y asegurar que la aplicación sea robusta y eficiente.
 
+### 4.1. Nuestro Ciclo de Desarrollo Colaborativo
+
+Para asegurar la máxima calidad y agilidad, nuestro trabajo seguirá un ciclo iterativo inspirado en TDD (Test-Driven Development) pero aplicado a todo el proyecto:
+
+1.  **Crear**: Desarrollaremos una nueva funcionalidad o componente de la forma más directa posible para cumplir con los requisitos iniciales.
+2.  **Validar**: Juntos, revisaremos el trabajo realizado. Tú, como Product Owner, validarás que cumple con la visión y los objetivos. Yo, como par de programación, aseguraré que sea funcional.
+3.  **Refactorizar**: Una vez validado, invertiremos tiempo en refinar y mejorar el código y la documentación, aplicando nuestros principios de arquitectura (Clean, SOLID, DRY) para asegurar la mantenibilidad a largo plazo.
+4.  **Continuar**: Con una base sólida y de alta calidad, pasaremos a la siguiente tarea del backlog.
+
 Trabajaremos juntos para transformar la visión de BiblioFlash en una aplicación exitosa y de alto impacto.

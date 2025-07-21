@@ -2,6 +2,8 @@
 
 Este documento describe la arquitectura técnica propuesta para la aplicación **BiblioFlash**, construida sobre la plataforma de **Google Firebase**.
 
+> **Nota Arquitectónica Importante**: La estrategia para la generación y el servicio de datos de contenido (flashcards) está detallada en el documento [ADR-001: Arquitectura de Datos Inicial](./07_adr_data_architecture.md). Se recomienda leer ese documento para entender el enfoque actual.
+
 ## 1. Diagrama de Arquitectura General
 
 ```
@@ -71,3 +73,27 @@ Este documento describe la arquitectura técnica propuesta para la aplicación *
 4.  Cuando el usuario lo solicita, la app reproduce el audio de la pronunciación, obteniendo el archivo `.mp3` desde **Cloud Storage**.
 5.  El usuario califica la dificultad de la tarjeta.
 6.  La app cliente actualiza el progreso del usuario en **Cloud Firestore**, y esta información se sincroniza automáticamente en todos sus dispositivos.
+
+## 5. Principios de Diseño y Arquitectura
+
+Para asegurar que BiblioFlash sea una aplicación mantenible, escalable y robusta, nos comprometemos a seguir los siguientes principios de diseño de software:
+
+### 5.1. **Clean Architecture (Arquitectura Limpia)**
+Adoptaremos una separación de capas para desacoplar la lógica de negocio de los detalles de implementación (frameworks, UI, base de datos).
+
+- **Presentation (UI)**: Nuestros componentes de React (`pages`, `components`). Su única responsabilidad es mostrar la interfaz y capturar la interacción del usuario.
+- **Application (Casos de Uso)**: La lógica que orquesta el flujo de datos. Implementaremos esto a través de **hooks de React personalizados** que encapsularán los casos de uso (ej. `useDecks`, `useAuthentication`).
+- **Domain (Entidades)**: Las reglas de negocio y entidades centrales (ej. `Deck`, `Card`, `User`). Serán objetos simples sin dependencias externas.
+- **Infrastructure (Infraestructura)**: Los detalles externos. Nuestro directorio `src/services` es la implementación de esta capa, donde aislamos toda la comunicación con Firebase (Firestore, Auth, etc.).
+
+De esta manera, nuestros componentes de UI no sabrán que usan Firebase; solo llamarán a un hook, que a su vez usará un servicio. Esto nos permitiría, en el futuro, cambiar de base de datos modificando solo la capa de infraestructura.
+
+### 5.2. **Principios SOLID**
+- **S - Principio de Responsabilidad Única**: Cada componente, hook o función tendrá una única razón para cambiar. El refactor que hicimos para crear `DeckCard` a partir de `DeckList` es un ejemplo perfecto de este principio en acción.
+- **O - Principio de Abierto/Cerrado**: Nuestras entidades de software estarán abiertas a la extensión, pero cerradas a la modificación. Usaremos la composición de componentes y props para extender la funcionalidad sin alterar el código existente.
+- **L - Principio de Sustitución de Liskov**: Aseguraremos que los componentes derivados puedan ser usados en lugar de sus componentes base sin alterar el comportamiento del programa.
+- **I - Principio de Segregación de Interfaces**: Los componentes no dependerán de props que no utilizan. Definiremos interfaces de props claras y concisas.
+- **D - Principio de Inversión de Dependencias**: Los componentes de alto nivel (páginas) no dependerán directamente de los de bajo nivel (servicios de Firebase), sino de abstracciones (hooks). 
+
+### 5.3. **DRY (Don't Repeat Yourself - No te repitas)**
+Evitaremos activamente la duplicación de código mediante la creación de componentes reutilizables, hooks personalizados y funciones de utilidad, manteniendo una base de código más limpia y fácil de mantener.

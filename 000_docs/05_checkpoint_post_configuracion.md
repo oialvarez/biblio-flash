@@ -34,7 +34,7 @@ Gracias a la superación de estos retos, BiblioFlash ahora cuenta con una base t
 
 Con la infraestructura ya establecida, el enfoque ahora se centra en la construcción de las funcionalidades principales para el usuario:
 
-1.  **Componente `DeckList`**: Se creará un componente para mostrar la lista de mazos de tarjetas disponibles.
+1.  **Componente `DeckList`**: Se ha creado e integrado un componente inicial (`DeckList`) para mostrar la lista de mazos, utilizando datos de ejemplo. El siguiente paso es reemplazar estos datos con información real de Firestore.
 2.  **Integración con Firestore**: Se añadirán datos de ejemplo en la base de datos de Firestore (ej. mazos de "Salmos", "Proverbios").
 3.  **Lectura de Datos en Tiempo Real**: Se implementará la lógica para que la aplicación lea la lista de mazos desde Firestore y la muestre en la página `DecksPage`.
 4.  **Autenticación de Usuarios**: Se comenzará a trabajar en el flujo de inicio de sesión y registro utilizando Firebase Auth.
