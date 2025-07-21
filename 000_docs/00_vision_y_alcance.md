@@ -32,14 +32,26 @@ Mis responsabilidades clave incluyen:
 - **Automatización**: Gestionar tareas repetitivas como la configuración de builds, despliegues y pruebas.
 - **Investigación y Resolución de Problemas**: Investigar soluciones técnicas, resolver desafíos de implementación y asegurar que la aplicación sea robusta y eficiente.
 
-### 4.1. Nuestro Ciclo de Desarrollo Colaborativo
+### 4.1. Nuestro Flujo de Trabajo Ágil
 
-Para asegurar la máxima calidad y agilidad, nuestro trabajo seguirá un ciclo iterativo y disciplinado:
+Adoptaremos un flujo de trabajo ágil centrado en la entrega de valor incremental. Nuestro proceso se organiza en dos niveles: el ciclo de Historias de Usuario (nuestro día a día) y el ciclo de Épicas (nuestros grandes hitos).
 
-1.  **Analizar y Planificar**: Descompongo tu petición en un plan de acción detallado y transparente. Este es el paso más importante para alinear la visión técnica con los objetivos del producto.
-2.  **Ejecutar (Crear)**: Implemento el plan paso a paso, desarrollando la funcionalidad de la forma más limpia y directa posible.
-3.  **Verificar**: Realizo comprobaciones técnicas (como análisis de código estático, pruebas si aplican) y te presento los resultados. En este punto, tú validas que la funcionalidad cumple con los requisitos y la visión como Product Owner.
-4.  **Refinar (Refactorizar)**: Una vez validado, mejoramos el código y la estructura, aplicando nuestros principios de arquitectura (Clean, SOLID, DRY) para garantizar la escalabilidad y mantenibilidad.
-5.  **Consolidar**: Confirmamos los cambios en el control de versiones (`git commit`), los integramos en la rama principal (`git push`) y, fundamentalmente, **actualizamos toda la documentación relevante** (`000_docs`) para que refleje el estado actual del proyecto. Con esta base sólida, pasamos a la siguiente tarea.
+#### 4.1.1. Ciclo por Historia de Usuario (Entrega Continua)
+
+Cada historia de usuario del backlog seguirá este ciclo de 4 pasos:
+
+1.  **Planificar la Historia**: Seleccionamos una historia del backlog y definimos juntos el plan de acción detallado para su implementación.
+2.  **Desarrollar y Validar**: Implemento la funcionalidad requerida. Durante y después del desarrollo, tú validas que cumple con los criterios de aceptación y la visión del producto.
+3.  **Refinar y Documentar**: Una vez validada, refino el código aplicando nuestros principios de arquitectura (Clean, SOLID, DRY) y actualizo exhaustivamente toda la documentación afectada (arquitectura, diagramas, READMEs, etc.).
+4.  **Consolidar e Integrar**: Con el código refinado y la documentación al día, agrupo todos los cambios en un único `commit` que referencia el ID de la historia (ej. `feat(auth): U-1 Implement Google SSO`). Hago `push` a la rama principal, completando la historia.
+
+#### 4.1.2. Ciclo por Épica (Despliegue por Hitos)
+
+Las épicas agrupan historias de usuario relacionadas para alcanzar un objetivo mayor.
+
+1.  **Completar la Épica**: Ejecutamos el ciclo anterior para todas las historias de usuario que componen la épica.
+2.  **Planificar el Despliegue**: Una vez que todas las historias de una épica están completadas e integradas, planificamos el despliegue a producción.
+3.  **Desplegar a Producción**: Ejecutamos el despliegue para que los usuarios finales puedan disfrutar de las nuevas funcionalidades. Este es nuestro hito de entrega de valor.
+4.  **Iniciar Nueva Épica**: Con la épica anterior en producción, seleccionamos la siguiente del backlog y comenzamos el ciclo de nuevo.
 
 Trabajaremos juntos para transformar la visión de BiblioFlash en una aplicación exitosa y de alto impacto.
