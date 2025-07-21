@@ -65,6 +65,29 @@ Este documento describe la arquitectura técnica propuesta para la aplicación *
   - **Integración nativa**: Excelente integración con los SDK de Firebase.
   - **Rendimiento**: Ofrecen un rendimiento cercano al nativo y una experiencia de usuario fluida.
 
+### Componentes clave
+
+-   **`DecksPage.jsx`**: Página principal que muestra los mazos del usuario y contiene el formulario para generar nuevos mazos.
+-   **`LoginPage.jsx`**: Página de inicio de sesión con el botón de Google SSO.
+-   **`StudyPage.jsx`**: Orquesta la sesión de estudio, utilizando el hook `useStudySession` para gestionar la lógica y mostrando la `Flashcard` o el `StudySummary`.
+-   **`Layout.jsx`**: Componente principal que define la estructura visual de la página (ej. header, botón de logout, contenido principal).
+-   **`DeckList.jsx` / `DeckCard.jsx`**: Muestran la lista de mazos del usuario. `DeckCard` es la tarjeta individual que navega a la sesión de estudio.
+-   **`Flashcard.jsx`**: Componente controlado que muestra una tarjeta individual con su efecto de volteo 3D.
+-   **`StudySummary.jsx`**: Muestra el resumen de la sesión de estudio al completarla.
+
+### Contextos
+
+-   **`AuthContext.jsx`**: Proporciona el estado de autenticación del usuario (si está logueado, sus datos, etc.) a toda la aplicación, gestionando la lógica de inicio y cierre de sesión.
+
+### Hooks
+
+-   **`useDecks.js`**: Encapsula toda la lógica para obtener la lista de mazos de un usuario desde Firestore, manejar los estados de carga/error y solicitar la generación de nuevos mazos.
+-   **`useStudySession.js`**: Contiene toda la lógica de una sesión de estudio: carga el mazo, gestiona la tarjeta actual, el estado de volteo, el progreso del usuario y el estado de finalización de la sesión.
+
+### Servicios
+
+-   **`deckService.js`**: Abstrae las llamadas a Firestore y a las Cloud Functions relacionadas con los mazos. Proporciona funciones como `getDecksForUser`, `generateDeck`, y `getDeckById`.
+
 ## 4. Flujo de Datos (Ejemplo: Sesión de Estudio)
 
 1.  Un usuario no autenticado que intenta acceder a una ruta protegida (ej. `/decks`) es redirigido a `/login`.

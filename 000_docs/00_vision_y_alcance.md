@@ -34,11 +34,12 @@ Mis responsabilidades clave incluyen:
 
 ### 4.1. Nuestro Ciclo de Desarrollo Colaborativo
 
-Para asegurar la máxima calidad y agilidad, nuestro trabajo seguirá un ciclo iterativo inspirado en TDD (Test-Driven Development) pero aplicado a todo el proyecto:
+Para asegurar la máxima calidad y agilidad, nuestro trabajo seguirá un ciclo iterativo y disciplinado:
 
-1.  **Crear**: Desarrollaremos una nueva funcionalidad o componente de la forma más directa posible para cumplir con los requisitos iniciales.
-2.  **Validar**: Juntos, revisaremos el trabajo realizado. Tú, como Product Owner, validarás que cumple con la visión y los objetivos. Yo, como par de programación, aseguraré que sea funcional.
-3.  **Refactorizar**: Una vez validado, invertiremos tiempo en refinar y mejorar el código y la documentación, aplicando nuestros principios de arquitectura (Clean, SOLID, DRY) para asegurar la mantenibilidad a largo plazo.
-4.  **Continuar**: Con una base sólida y de alta calidad, pasaremos a la siguiente tarea del backlog.
+1.  **Analizar y Planificar**: Descompongo tu petición en un plan de acción detallado y transparente. Este es el paso más importante para alinear la visión técnica con los objetivos del producto.
+2.  **Ejecutar (Crear)**: Implemento el plan paso a paso, desarrollando la funcionalidad de la forma más limpia y directa posible.
+3.  **Verificar**: Realizo comprobaciones técnicas (como análisis de código estático, pruebas si aplican) y te presento los resultados. En este punto, tú validas que la funcionalidad cumple con los requisitos y la visión como Product Owner.
+4.  **Refinar (Refactorizar)**: Una vez validado, mejoramos el código y la estructura, aplicando nuestros principios de arquitectura (Clean, SOLID, DRY) para garantizar la escalabilidad y mantenibilidad.
+5.  **Consolidar**: Confirmamos los cambios en el control de versiones (`git commit`), los integramos en la rama principal (`git push`) y, fundamentalmente, **actualizamos toda la documentación relevante** (`000_docs`) para que refleje el estado actual del proyecto. Con esta base sólida, pasamos a la siguiente tarea.
 
 Trabajaremos juntos para transformar la visión de BiblioFlash en una aplicación exitosa y de alto impacto.

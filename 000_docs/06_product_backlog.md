@@ -25,43 +25,45 @@ Utilizaremos un enfoque ágil. Las historias se mueven de `Pendiente` a `En Prog
 
 ---
 
-## Épica 1: Sistema de Autenticación y Perfil de Usuario
+## Épica 1: Sistema de Autenticación y Perfil de Usuario (En Progreso)
 
 *Como usuario, quiero poder crear una cuenta y gestionar mi perfil para tener una experiencia personalizada y guardar mi progreso.*
 
 | ID | Historia de Usuario | Prioridad | Estado |
 | :-- | :------------------------------------------------------------------------------- | :-------- | :--- |
-| **U-1** | Como nuevo usuario, quiero poder registrarme e iniciar sesión con un solo clic usando mi cuenta de Google. | Crítica | ⏳ Pendiente |
-| **U-2** | Como usuario autenticado, quiero poder cerrar sesión de forma segura.             | Alta      | ⏳ Pendiente |
+| **U-1** | Como nuevo usuario, quiero poder registrarme e iniciar sesión con un solo clic usando mi cuenta de Google. | Crítica | ✅ Completado |
+| **U-2** | Como usuario autenticado, quiero poder cerrar sesión de forma segura.             | Alta      | ✅ Completado |
 | **U-3** | Como usuario registrado, quiero tener una página de perfil básica.                 | Media     | ⏳ Pendiente |
 | **U-4** | Como nuevo usuario, quiero poder registrarme usando mi correo y contraseña.      | Media     | ⏳ Pendiente |
 
 ---
 
-## Épica 2: Gestión y Visualización de Mazos de Tarjetas (Decks)
+## Épica 2: Gestión y Visualización de Mazos de Tarjetas (Decks) (En Progreso)
 
 *Como usuario, quiero poder ver los mazos de tarjetas disponibles, elegir uno para empezar a estudiar y solicitar la creación de nuevos mazos.*
 
 | ID | Historia de Usuario | Prioridad | Estado |
 | :-- | :------------------------------------------------------------------------------- | :-------- | :--- |
-| **D-1** | Como usuario, quiero ver una lista de todos los mazos de tarjetas disponibles leídos desde Firestore.   | Alta      | ⏳ Pendiente |
-| **D-2** | Como usuario, quiero poder solicitar la generación de un nuevo mazo (UI para llamar a `generateDeckV2`). | Alta      | ⏳ Pendiente |
-| **D-3** | Como usuario, al hacer clic en un mazo, quiero ser llevado a una página de detalle del mazo. | Alta      | ⏳ Pendiente |
-| **D-4** | Como usuario, quiero poder crear mis propios mazos de tarjetas personalizados.   | Baja      | ⏳ Pendiente |
+| **D-1** | Como usuario, quiero ver una lista de todos mis mazos de tarjetas leídos desde Firestore.   | Crítica      | ✅ Completado |
+| **D-2** | Como usuario, quiero poder solicitar la generación de un nuevo mazo mediante un formulario. | Crítica      | ✅ Completado |
+| **D-3** | Como usuario, al hacer clic en "Estudiar", quiero ser llevado a la página de estudio de ese mazo. | Alta      | ✅ Completado |
+| **D-4** | Como usuario, quiero poder crear mis propios mazos de tarjetas personalizados.   | Media      | ⏳ Pendiente |
 
 ---
 
-## Épica 3: Experiencia de Aprendizaje (Flashcards)
+## Épica 3: Experiencia de Aprendizaje (Flashcards) (En Progreso)
 
 *Como estudiante, quiero una interfaz de flashcards interactiva y efectiva para memorizar vocabulario y pasajes bíblicos.*
 
 | ID | Historia de Usuario | Prioridad | Estado |
 | :-- | :------------------------------------------------------------------------------- | :-------- | :--- |
-| **F-1** | Como estudiante, quiero poder ver una tarjeta a la vez de un mazo seleccionado.  | Alta      | ⏳ Pendiente |
-| **F-2** | Como estudiante, quiero poder "voltear" la tarjeta para ver la respuesta/traducción. | Alta      | ⏳ Pendiente |
-| **F-3** | Como estudiante, quiero poder escuchar la pronunciación en inglés de la tarjeta. | Alta      | ⏳ Pendiente |
-| **F-4** | Como estudiante, quiero poder calificar mi respuesta (fácil, difícil) para el SRS. | Media     | ⏳ Pendiente |
-| **F-5** | Como estudiante, quiero que la app me muestre las tarjetas usando un algoritmo SRS. | Media     | ⏳ Pendiente |
+| **F-1** | Como estudiante, quiero que la sesión de estudio me presente una tarjeta a la vez.  | Alta      | ✅ Completado |
+| **F-2** | Como estudiante, quiero poder "voltear" la tarjeta para ver la respuesta/traducción. | Alta      | ✅ Completado |
+| **F-3** | Como estudiante, quiero poder navegar entre las tarjetas (siguiente/anterior). | Alta      | ✅ Completado |
+| **F-4** | Como estudiante, quiero poder calificar mi respuesta ("Repasar" o "¡Lo sé!"). | Alta      | ✅ Completado |
+| **F-5** | Como estudiante, al finalizar una sesión, quiero ver un resumen de mi rendimiento. | Alta      | ✅ Completado |
+| **F-6** | Como estudiante, quiero poder escuchar la pronunciación en inglés de la tarjeta. | Media     | ⏳ Pendiente |
+| **F-7** | Como estudiante, quiero que la app me muestre las tarjetas usando un algoritmo SRS. | Media     | ⏳ Pendiente |
 
 ---
 
