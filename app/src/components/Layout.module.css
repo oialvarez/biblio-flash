@@ -5,8 +5,8 @@
 }
 
 .header {
-  background-color: var(--primary-purple);
-  color: var(--primary-white);
+  background-color: var(--color-primary);
+  color: var(--color-white);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -19,21 +19,28 @@
 }
 
 .homeLink {
-  color: var(--primary-white);
+  color: var(--color-white);
   text-decoration: none;
 }
 
-.nav a {
-  color: var(--primary-white);
+.navLink {
+  color: var(--color-white);
   text-decoration: none;
   margin-left: 1.5rem;
   font-size: 1rem;
   font-weight: 500;
   transition: opacity 0.2s ease-in-out;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
 }
 
-.nav a:hover {
+.navLink:hover {
   opacity: 0.8;
+}
+
+.active {
+  border-bottom-color: var(--color-accent);
+  font-weight: 700;
 }
 
 .mainContent {
