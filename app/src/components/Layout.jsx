@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom';
 import styles from './Layout.module.css';
 
 function Layout({ children }) {
   return (
     <div className={styles.layoutContainer}>
       <header className={styles.header}>
-        <h1>BiblioFlash</h1>
-        <nav>
-          {/* Navigation links will go here */}
+        <h1><Link to="/" className={styles.homeLink}>BiblioFlash</Link></h1>
+        <nav className={styles.nav}>
+          <Link to="/">Home</Link>
+          <Link to="/decks">Decks</Link>
         </nav>
       </header>
       <main className={styles.mainContent}>

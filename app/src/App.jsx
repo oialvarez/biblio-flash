@@ -1,16 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-
+import { Outlet } from 'react-router-dom';
 import Layout from './components/Layout';
+import './App.css';
 
 function App() {
   return (
     <Layout>
-      {/* The content for each page will be rendered here */}
-      <h2>Welcome to BiblioFlash!</h2>
-      <p>Your journey to mastering biblical English starts now.</p>
+      <Outlet />
     </Layout>
-  )
+  );
 }
 
-export default App
+export default App;
