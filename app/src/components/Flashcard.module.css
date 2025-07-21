@@ -1,0 +1,49 @@
+.flashcardContainer {
+  width: 300px;
+  height: 200px;
+  perspective: 1000px; /* Needed for the 3D effect */
+  cursor: pointer;
+}
+
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.flashcard.isFlipped {
+  transform: rotateY(180deg);
+}
+
+.flashcardFaceFront,
+.flashcardFaceBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back of the element when it's not facing the screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.flashcardFaceFront {
+  background-color: var(--color-white);
+  color: var(--text-dark);
+  border: 1px solid #ddd;
+}
+
+.flashcardFaceBack {
+  background-color: var(--color-secondary-light);
+  color: var(--text-dark);
+  transform: rotateY(180deg);
+  border: 1px solid var(--color-secondary);
+}

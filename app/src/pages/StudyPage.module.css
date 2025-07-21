@@ -1,0 +1,102 @@
+.studyContainer {
+  padding: 2rem;
+  text-align: center;
+}
+
+.title {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.deckInfo {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.flashcardArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.feedback {
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+.error {
+  color: var(--color-error);
+  font-weight: bold;
+}
+
+.navigationControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.navButton {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.navButton:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.navButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.progressIndicator {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  min-width: 80px; /* Ensure space doesn't jump */
+  text-align: center;
+}
+
+.feedbackControls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.feedbackButton {
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedbackButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reviewButton {
+  background-color: #ef5350; /* Red tone */
+}
+
+.knowButton {
+  background-color: #66bb6a; /* Green tone */
+}
